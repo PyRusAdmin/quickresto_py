@@ -4,12 +4,24 @@ from dotenv import load_dotenv
 import os
 
 # Загружаем переменные из файла .env (override=True переопределяет системные переменные)
-load_dotenv(override=True)
+
+'''
+Если в системе Windows уже установлена переменная с таким же именем (например, USERNAME часто занято именем 
+пользователя компьютера), этот флаг заставит Python взять значение именно из файла, а не из системы.
+'''
+load_dotenv(
+    override=True  # Переопределение значений для существующих ключей (что бы случайно не взять занятое имя)
+)
 
 # Достаем данные из окружения
-LAYER_NAME: str = os.getenv("LAYER_NAME")
-USERNAME: str = os.getenv("USERNAME")
-PASSWORD: str = os.getenv("PASSWORD")
+LAYER_NAME: str = os.getenv("LAYER_NAME")  # Извлекаем значение из .env файла
+USERNAME: str = os.getenv("USERNAME")  # Извлекаем значение из .env файла
+PASSWORD: str = os.getenv("PASSWORD")  # Извлекаем значение из .env файла
+
+'''
+HTTPBasicAuth: Quick Resto использует стандартную проверку «Логин:Пароль», зашифрованную в заголовке запроса.
+BASE_URL: Автоматически подставляет имя «облака» (layer) в адрес запроса (username равное layer).
+'''
 
 BASE_URL = f"https://{LAYER_NAME}.quickresto.ru/platform/online/api"
 auth = HTTPBasicAuth(USERNAME, PASSWORD)
@@ -17,13 +29,15 @@ HEADERS = {"Content-Type": "application/json"}
 
 
 def get_all_clients():
+    """Получает данные о всех клиентах"""
+
     all_clients = []
     limit = 500  # Максимально рекомендуемый размер порции для Quick Resto
-    offset = 0
+    offset = 0  # Это смещение. Сначала мы берем первых 500 (с 0-го по 499-го).
 
     print("🚀 Начинаю загрузку всех клиентов...")
 
-    while True:
+    while True:  # Бесконечный цикл пока не соберет все данные (клиентов)
         url = f"{BASE_URL}/list"
         query_params = {
             "moduleName": "crm.customer",
