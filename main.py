@@ -1,6 +1,7 @@
 import requests
 
 
+
 def main():
     try:
         url = "https://[имя_аккаунта].quickresto.ru/api/v1/clients"
