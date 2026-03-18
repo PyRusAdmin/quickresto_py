@@ -17,7 +17,7 @@ def main():
         response = requests.get(url, headers=headers, params=params)
         print(response.json())
     except requests.exceptions.InvalidURL:
-        logger.exception("Неверный URL")
+        logger.error("Неверный URL")
 
 
 if __name__ == '__main__':
