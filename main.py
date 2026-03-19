@@ -2,6 +2,9 @@ import requests
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
 import os
+from loguru import logger
+
+# https://quickresto.ru/api/
 
 # Загружаем переменные из файла .env (override=True переопределяет системные переменные)
 
@@ -82,6 +85,35 @@ def get_all_clients():
     return all_clients
 
 
+def get_full_client_info(client_id):
+    """Возвращает полную информацию об одном конкретном пользователе (клиенте)"""
+    # Исправлено: /read вместо /red
+    url = f"{BASE_URL}/read"
+
+    query_params = {
+        "moduleName": "crm.customer",
+        "className": "ru.edgex.quickresto.modules.crm.customer.CrmCustomer"
+    }
+    # ID клиента передаем в теле запроса как JSON
+    payload = {"id": client_id}
+
+    try:
+        response = requests.get(
+            url,
+            params=query_params,
+            json=payload,
+            auth=auth,
+            headers=HEADERS,
+            timeout=30
+        )
+        response.raise_for_status()
+        return response.json()
+
+    except Exception as e:
+        print(f"❌ Ошибка при чтении клиента {client_id}: {e}")
+        return None
+
+
 if __name__ == "__main__":
     all_data = get_all_clients()
 
@@ -100,3 +132,9 @@ if __name__ == "__main__":
 
         if len(all_data) > 10:
             print(f"... и еще {len(all_data) - 10} клиентов")
+
+    # Выводим полную структуру первого клиента для отладки
+    if all_data:
+        print("\n🔍 Полная структура первого клиента:")
+        import json
+        print(json.dumps(all_data[0], indent=2, ensure_ascii=False))
