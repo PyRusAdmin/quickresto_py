@@ -2,7 +2,7 @@
 import requests
 from loguru import logger
 
-from main import BASE_URL, auth, headers
+from main import base_url, auth, headers
 
 
 def delete_customer(customer_id: int, base_url, auth, headers):
@@ -45,4 +45,4 @@ def delete_customer(customer_id: int, base_url, auth, headers):
 
 """Удаление клиента по ID"""
 
-delete_customer(customer_id=7678, base_url=BASE_URL, auth=auth, headers=headers)
+delete_customer(customer_id=7678, base_url=base_url, auth=auth, headers=headers)
