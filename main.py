@@ -1,8 +1,11 @@
-import requests
-from requests.auth import HTTPBasicAuth
-from dotenv import load_dotenv
+# -*- coding: utf-8 -*-
+import json
 import os
+
+import requests
+from dotenv import load_dotenv
 from loguru import logger
+from requests.auth import HTTPBasicAuth
 from rich.console import Console
 
 console = Console()
@@ -20,17 +23,17 @@ load_dotenv(
 )
 
 # Достаем данные из окружения
-LAYER_NAME_QUICKRESTO: str = os.getenv("LAYER_NAME_QUICKRESTO")  # Извлекаем значение из .env файла
-USERNAME_QUICKRESTO: str = os.getenv("USERNAME_QUICKRESTO")  # Извлекаем значение из .env файла
-PASSWORD_QUICKRESTO: str = os.getenv("PASSWORD_QUICKRESTO")  # Извлекаем значение из .env файла
+layer_name_quickresto: str = os.getenv("LAYER_NAME_QUICKRESTO")  # Извлекаем значение из .env файла
+username_quickresto: str = os.getenv("USERNAME_QUICKRESTO")  # Извлекаем значение из .env файла
+password_quickresto: str = os.getenv("PASSWORD_QUICKRESTO")  # Извлекаем значение из .env файла
 
 '''
 HTTPBasicAuth: Quick Resto использует стандартную проверку «Логин:Пароль», зашифрованную в заголовке запроса.
 BASE_URL: Автоматически подставляет имя «облака» (layer) в адрес запроса (username равное layer).
 '''
 
-BASE_URL = f"https://{LAYER_NAME_QUICKRESTO}.quickresto.ru/platform/online/api"
-auth = HTTPBasicAuth(USERNAME_QUICKRESTO, PASSWORD_QUICKRESTO)
+BASE_URL = f"https://{layer_name_quickresto}.quickresto.ru/platform/online/api"
+auth = HTTPBasicAuth(username_quickresto, password_quickresto)
 HEADERS = {"Content-Type": "application/json"}
 
 
@@ -115,21 +118,6 @@ def get_full_client_info(client_id):
         return None
 
 
-def get_client_phone(phone):
-    """Возвращает информацию о клиенте по номеру телефона"""
-    url = f"https://{LAYER_NAME_QUICKRESTO}.quickresto.ru/platform/online/bonuses/filterCustomers"
-
-    payload = {
-        'search': phone,
-        'typeList': ['customer'],
-        'limit': 10,
-        'offset': 0
-    }
-    response = requests.post(url, json=payload, auth=auth, headers=HEADERS, timeout=30)
-    response.raise_for_status()
-    return response.json()
-
-
 def create_client(name_customer, phone_customer):
     """Создание нового клиента"""
     try:
@@ -172,7 +160,7 @@ def update_customer_bonus(customer_id: int, amount: float, customer_phone):
     try:
         logger.info(f"Редактирование бонусных балов для клиента {customer_id}")
 
-        url = f"https://{LAYER_NAME_QUICKRESTO}.quickresto.ru/platform/online/bonuses/creditHold"
+        url = f"https://{layer_name_quickresto}.quickresto.ru/platform/online/bonuses/creditHold"
 
         body = {
             "customerToken": {
@@ -222,22 +210,7 @@ if __name__ == "__main__":
 
     client = get_full_client_info(7677)  # подставь реальный ID
     if client:
-        import json
-
         print(json.dumps(client, indent=2, ensure_ascii=False))
-
-    print(100 * "#")
-
-    """Получение клиента по номеру телефона"""
-
-    client = get_client_phone('89142839779')  # подставь реальный номер
-
-    if client:
-        import json
-
-        print(json.dumps(client, indent=2, ensure_ascii=False))
-
-        console.print_json(json.dumps(client, indent=2, ensure_ascii=False))
 
     print(100 * "#")
 
@@ -245,22 +218,18 @@ if __name__ == "__main__":
 
     client = create_client('Виталий', '79493531398')
     if client:
-        import json
-
         print(json.dumps(client, indent=2, ensure_ascii=False))
 
     print(100 * "#")
 
     """Получение клиента по номеру телефона"""
 
-    client = get_client_phone('79493531398')  # подставь реальный номер
-
-    if client:
-        import json
-
-        print(json.dumps(client, indent=2, ensure_ascii=False))
-
-        console.print_json(json.dumps(client, indent=2, ensure_ascii=False))
+    # client = get_client_phone('79493531398')  # подставь реальный номер
+    #
+    # if client:
+    #     print(json.dumps(client, indent=2, ensure_ascii=False))
+    #
+    #     console.print_json(json.dumps(client, indent=2, ensure_ascii=False))
 
     """Редактирование клиента"""
 
