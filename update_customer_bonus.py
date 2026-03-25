@@ -4,8 +4,7 @@ import json
 import requests
 from loguru import logger
 
-from config import console
-from main import layer_name_quickresto, auth, headers
+from config import console, layer_name_quickresto, auth, headers
 
 
 def update_customer_bonus(customer_id: int, amount: float, customer_phone):
@@ -51,3 +50,7 @@ def print_update_customer_bonus():
         console.print_json(json.dumps(result, indent=2, ensure_ascii=False))
     else:
         print("Функция вернула None — смотри логи ошибок")
+
+
+if __name__ == "__main__":
+    print_update_customer_bonus()

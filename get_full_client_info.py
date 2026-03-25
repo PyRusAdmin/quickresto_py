@@ -4,8 +4,11 @@ import json
 import requests
 from loguru import logger
 
-from config import console
-from main import base_url, auth, headers
+from config import console, base_url, auth, headers
+
+
+# Убираем импорт из main.py чтобы избежать циклической зависимости
+# base_url, auth, headers будут передаваться как параметры
 
 
 def get_full_client_info(client_id, base_url, auth, headers):
