@@ -9,7 +9,15 @@ from main import base_url, auth, headers
 
 
 def get_full_client_info(client_id, base_url, auth, headers):
-    """Возвращает полную информацию об одном конкретном пользователе (клиенте)"""
+    """
+    Возвращает полную информацию об одном конкретном пользователе (клиенте)
+
+    :param client_id: ID клиента
+    :param base_url: базовый URL
+    :param auth: аутентификация
+    :param headers: заголовки
+    :return: полную информацию об одном конкретном пользователе (клиенте)
+    """
     url = f"{base_url}/read"
 
     query_params = {
