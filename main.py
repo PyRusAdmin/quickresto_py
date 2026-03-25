@@ -91,33 +91,6 @@ def get_all_clients():
     return all_clients
 
 
-def get_full_client_info(client_id):
-    """Возвращает полную информацию об одном конкретном пользователе (клиенте)"""
-    url = f"{base_url}/read"
-
-    query_params = {
-        "moduleName": "crm.customer",
-        "className": "ru.edgex.quickresto.modules.crm.customer.CrmCustomer",
-        "objectId": client_id,  # ← objectId идёт в params, не в body
-    }
-
-    try:
-        response = requests.get(
-            url,
-            params=query_params,
-            # json=payload,
-            auth=auth,
-            headers=headers,
-            timeout=30
-        )
-        response.raise_for_status()
-        return response.json()
-
-    except Exception as e:
-        print(f"❌ Ошибка при чтении клиента {client_id}: {e}")
-        return None
-
-
 def update_customer_bonus(customer_id: int, amount: float, customer_phone):
     """Редактирование бонусных балов для клиента"""
     try:
@@ -169,21 +142,13 @@ if __name__ == "__main__":
 
     print(100 * "#")
 
-    """Получение клиента по ID"""
-
-    client = get_full_client_info(7677)  # подставь реальный ID
-    if client:
-        print(json.dumps(client, indent=2, ensure_ascii=False))
-
-    print(100 * "#")
-
     """Получение клиента по номеру телефона. Номер телефона должен быть в формате 79991234567"""
 
     print_client_info(
-        layer_name_quickresto=layer_name_quickresto,
-        phone_number='79493531398',
-        auth=auth,
-        headers=headers
+        layer_name_quickresto=layer_name_quickresto,  # имя слоя QuickResto
+        phone_number='79493531398',  # номер телефона посетителя
+        auth=auth,  # авторизация
+        headers=headers  # заголовки
     )
 
     """Редактирование клиента"""
