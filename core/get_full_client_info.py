@@ -4,7 +4,7 @@ import json
 import requests
 from loguru import logger
 
-from config import console, base_url, auth, headers
+from config.config import console, base_url, auth, headers
 
 
 # Убираем импорт из main.py чтобы избежать циклической зависимости

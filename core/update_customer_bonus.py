@@ -4,17 +4,19 @@ import json
 import requests
 from loguru import logger
 
-from config import console, layer_name_quickresto, auth, headers
+from config.config import console, layer_name_quickresto, auth, headers
 
 
 def update_customer_bonus(customer_id: int, amount: float, customer_phone):
     """
-    Редактирование бонусных балов для клиента
+    Редактирование бонусных балов для клиента. Для изменения бонусных балов, требуется ID клиента в QuickResto и номер
+    телефона клиента, котрый в базе данных QuickResto. Для получения ID клиента и номера телефона клиента,
+    требуется можно использовать метод get_customer_by_phone.
 
-    :param customer_id: идентификатор клиента
-    :param amount: количество бонусных балов
-    :param customer_phone: номер телефона клиента
-    :return: результат выполнения запроса
+    :param customer_id: идентификатор клиента в QuickResto
+    :param amount: количество бонусных балов для клиента в QuickResto
+    :param customer_phone: номер телефона клиента в QuickResto
+    :return: результат выполнения запроса в формате JSON
     """
     try:
         logger.info(f"Редактирование бонусных балов для клиента {customer_id}")

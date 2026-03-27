@@ -4,7 +4,7 @@ import json
 import requests
 from loguru import logger
 
-from config import console, base_url, auth, headers
+from config.config import console, base_url, auth, headers
 
 
 def create_client(name_customer, phone_customer, base_url, auth, headers):

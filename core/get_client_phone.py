@@ -4,7 +4,7 @@ import json
 import requests
 from loguru import logger
 
-from config import console
+from config.config import console
 
 
 def get_customer_by_phone(layer_name_quickresto, phone_number, auth, headers):

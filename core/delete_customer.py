@@ -2,7 +2,7 @@
 import requests
 from loguru import logger
 
-from config import base_url, auth, headers
+from config.config import base_url, auth, headers
 
 
 def delete_customer(customer_id: int, base_url, auth, headers):

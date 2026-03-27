@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 
-from config import base_url, auth, headers
+from config.config import base_url, auth, headers
 
 
 def get_all_clients():
