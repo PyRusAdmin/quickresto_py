@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-import json
-
 import requests
-from loguru import logger
-
-from config.config import console
 
 
 def get_customer_by_phone(layer_name_quickresto, phone_number, auth, headers):
@@ -28,45 +23,3 @@ def get_customer_by_phone(layer_name_quickresto, phone_number, auth, headers):
     response = requests.post(url, json=payload, auth=auth, headers=headers, timeout=30)
     response.raise_for_status()
     return response.json()
-
-
-def print_client_info(layer_name_quickresto, phone_number, auth, headers):
-    """
-    Выводит информацию о клиенте по номеру телефона в формате JSON из QuickResto
-
-    :param layer_name_quickresto: название слоя quickresto
-    :param phone_number: номер телефона
-    :param auth: авторизация в quickresto
-    :param headers: заголовки запроса
-    """
-    try:
-        result = get_customer_by_phone(layer_name_quickresto, phone_number, auth, headers)
-
-        if result:
-            console.print_json(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # Достаём список клиентов
-        customers = result.get('customers', [])
-
-        if customers:
-            customer = customers[0]  # Выбираем первого клиента в списке клиентов
-            # Личные данные
-            client_id = customer.get('id')
-            name = customer.get('firstName', '—')
-            surname = customer.get('lastName', '—')
-            guid = customer.get('customerGuid', '—')
-
-            # Телефон — вложенный список
-            contacts = customer.get('contactMethods', [])
-            phone = contacts[0].get('value') if contacts else '—'
-
-            console.log(f"ID:      {client_id}")
-            console.log(f"Имя:     {name} {surname}")
-            console.log(f"Телефон: {phone}")
-            console.log(f"GUID:    {guid}")
-
-        else:
-            logger.warning("Клиент не найден")
-
-    except Exception as e:
-        logger.exception(f"Ошибка: {e}")

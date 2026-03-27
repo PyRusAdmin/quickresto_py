@@ -5,7 +5,7 @@ from unittest.mock import Mock
 import pytest
 import requests
 
-from core.update_customer_bonus import update_customer_bonus, print_update_customer_bonus
+from core.update_customer_bonus import update_customer_bonus
 
 
 # ─────────────────────────────────────────────────────────────

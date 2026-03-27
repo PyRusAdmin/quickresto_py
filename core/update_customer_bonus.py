@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
-import json
-
 import requests
 from loguru import logger
-
-from config.config import console, layer_name_quickresto, auth, headers
 
 
 def update_customer_bonus(layer_name_quickresto: str, customer_id: int, amount: float, customer_phone: str, auth,
@@ -45,26 +41,3 @@ def update_customer_bonus(layer_name_quickresto: str, customer_id: int, amount: 
 
     except Exception as e:
         logger.exception(e)
-
-
-def print_update_customer_bonus():
-    """Редактирование клиента"""
-    from config.config import layer_name_quickresto, auth, headers
-
-    result = update_customer_bonus(
-        layer_name_quickresto=layer_name_quickresto,
-        customer_id=7678,
-        amount=0,
-        customer_phone='79493531398',
-        auth=auth,
-        headers=headers
-    )
-
-    if result:
-        console.print_json(json.dumps(result, indent=2, ensure_ascii=False))
-    else:
-        print("Функция вернула None — смотри логи ошибок")
-
-
-if __name__ == "__main__":
-    print_update_customer_bonus()

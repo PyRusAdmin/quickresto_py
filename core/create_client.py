@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
-import json
-
 import requests
 from loguru import logger
-
-from config.config import console, base_url, auth, headers
 
 
 def create_client(name_customer, phone_customer, base_url, auth, headers):
@@ -51,22 +47,3 @@ def create_client(name_customer, phone_customer, base_url, auth, headers):
         return response.json()
     except Exception as e:
         logger.exception(e)
-
-
-def demo_create_client():
-    """Пример использования функции create_client"""
-    result = create_client(
-        name_customer='Виталий',
-        phone_customer='79493531398',
-        base_url=base_url,
-        auth=auth,
-        headers=headers
-    )
-
-    if result:
-        print(f"Клиент с телефоном 79493531398 уже существует")
-        console.print_json(json.dumps(result, indent=2, ensure_ascii=False))
-
-
-if __name__ == "__main__":
-    demo_create_client()

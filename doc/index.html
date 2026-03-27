@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickResto API — Справочник</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap"
+          rel="stylesheet">
     <style>
         :root {
             --bg: #0d0f14;
@@ -375,16 +376,37 @@
         <!-- AUTH -->
         <div class="section active" id="auth">
             <div class="section-title"><span class="dot"></span>Авторизация</div>
-            <p class="section-desc">API использует HTTP Basic Auth — логин и пароль от аккаунта QuickResto, закодированные в Base64.</p>
+            <p class="section-desc">API использует HTTP Basic Auth — логин и пароль от аккаунта QuickResto,
+                закодированные в Base64.</p>
 
             <div class="card">
                 <div class="card-title">🔑 Как это работает</div>
                 <table class="param-table">
-                    <tr><th>Что</th><th>Значение</th><th></th></tr>
-                    <tr><td>Метод</td><td>HTTP Basic Auth</td><td></td></tr>
-                    <tr><td>Заголовок</td><td>Authorization: Basic &lt;base64(login:password)&gt;</td><td></td></tr>
-                    <tr><td>Content-Type</td><td>application/json</td><td class="req">обязателен</td></tr>
-                    <tr><td>Connection</td><td>keep-alive</td><td class="req">обязателен</td></tr>
+                    <tr>
+                        <th>Что</th>
+                        <th>Значение</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Метод</td>
+                        <td>HTTP Basic Auth</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Заголовок</td>
+                        <td>Authorization: Basic &lt;base64(login:password)&gt;</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>application/json</td>
+                        <td class="req">обязателен</td>
+                    </tr>
+                    <tr>
+                        <td>Connection</td>
+                        <td>keep-alive</td>
+                        <td class="req">обязателен</td>
+                    </tr>
                 </table>
             </div>
 
@@ -407,18 +429,22 @@ BASE_URL = <span class="str">'https://demo.quickresto.ru/platform/online'</span>
                 </div>
             </div>
 
-            <div class="alert info">ℹ️ Имя облака (layer_name) — это поддомен вашего QuickResto. Например, если вы заходите на <code>myfood.quickresto.ru</code>, то layer_name = <code>myfood</code>.</div>
+            <div class="alert info">ℹ️ Имя облака (layer_name) — это поддомен вашего QuickResto. Например, если вы
+                заходите на <code>myfood.quickresto.ru</code>, то layer_name = <code>myfood</code>.
+            </div>
         </div>
 
         <!-- STRUCTURE -->
         <div class="section" id="structure">
             <div class="section-title"><span class="dot"></span>Структура URL</div>
-            <p class="section-desc">Все эндпоинты строятся по единому принципу: <strong>действие</strong> + <strong>модуль</strong> + <strong>класс</strong>.</p>
+            <p class="section-desc">Все эндпоинты строятся по единому принципу: <strong>действие</strong> + <strong>модуль</strong>
+                + <strong>класс</strong>.</p>
 
             <div class="card">
                 <div class="card-title">Шаблон</div>
                 <div class="code-block">
-          <pre><span class="fn">https://</span><span class="key">{layer_name}</span><span class="fn">.quickresto.ru/platform/online</span><span class="str">/api/{action}</span>
+          <pre><span class="fn">https://</span><span class="key">{layer_name}</span><span class="fn">.quickresto.ru/platform/online</span><span
+                  class="str">/api/{action}</span>
     <span class="kw">?moduleName=</span><span class="key">{module}</span>
     <span class="kw">&className=</span><span class="key">{class}</span>
     <span class="kw">&objectId=</span><span class="num">{id}</span>   <span class="cmt">← только для /read</span></pre>
@@ -428,12 +454,36 @@ BASE_URL = <span class="str">'https://demo.quickresto.ru/platform/online'</span>
             <div class="card">
                 <div class="card-title">Действия (action)</div>
                 <table class="param-table">
-                    <tr><th>action</th><th>HTTP</th><th>Что делает</th></tr>
-                    <tr><td>/api/read</td><td><span class="method get">GET</span></td><td>Получить один объект по ID</td></tr>
-                    <tr><td>/api/list</td><td><span class="method get">GET</span></td><td>Получить список объектов</td></tr>
-                    <tr><td>/api/create</td><td><span class="method post">POST</span></td><td>Создать объект</td></tr>
-                    <tr><td>/api/update</td><td><span class="method post">POST</span></td><td>Изменить объект</td></tr>
-                    <tr><td>/api/remove</td><td><span class="method post">POST</span></td><td>Удалить объект</td></tr>
+                    <tr>
+                        <th>action</th>
+                        <th>HTTP</th>
+                        <th>Что делает</th>
+                    </tr>
+                    <tr>
+                        <td>/api/read</td>
+                        <td><span class="method get">GET</span></td>
+                        <td>Получить один объект по ID</td>
+                    </tr>
+                    <tr>
+                        <td>/api/list</td>
+                        <td><span class="method get">GET</span></td>
+                        <td>Получить список объектов</td>
+                    </tr>
+                    <tr>
+                        <td>/api/create</td>
+                        <td><span class="method post">POST</span></td>
+                        <td>Создать объект</td>
+                    </tr>
+                    <tr>
+                        <td>/api/update</td>
+                        <td><span class="method post">POST</span></td>
+                        <td>Изменить объект</td>
+                    </tr>
+                    <tr>
+                        <td>/api/remove</td>
+                        <td><span class="method post">POST</span></td>
+                        <td>Удалить объект</td>
+                    </tr>
                 </table>
             </div>
 
@@ -453,15 +503,36 @@ GET /api/list
         <!-- READ -->
         <div class="section" id="read">
             <div class="section-title"><span class="dot"></span>read — получить объект</div>
-            <p class="section-desc">Возвращает один объект со всеми вложенными подобъектами. Нужен <strong>objectId</strong>.</p>
+            <p class="section-desc">Возвращает один объект со всеми вложенными подобъектами. Нужен
+                <strong>objectId</strong>.</p>
 
             <div class="card">
                 <div class="card-title"><span class="method get">GET</span> /api/read</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>moduleName</td><td>string</td><td>query</td><td>Имя модуля <span class="req">*</span></td></tr>
-                    <tr><td>className</td><td>string</td><td>query</td><td>Полное имя класса <span class="req">*</span></td></tr>
-                    <tr><td>objectId</td><td>integer</td><td>query</td><td>ID объекта <span class="req">*</span></td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>moduleName</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Имя модуля <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>className</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Полное имя класса <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>objectId</td>
+                        <td>integer</td>
+                        <td>query</td>
+                        <td>ID объекта <span class="req">*</span></td>
+                    </tr>
                 </table>
             </div>
 
@@ -472,7 +543,8 @@ GET /api/list
                     <pre><span class="kw">def</span> <span class="fn">get_customer</span>(customer_id: <span class="fn">int</span>) -> dict:
     params = {
         <span class="str">'moduleName'</span>: <span class="str">'crm.customer'</span>,
-        <span class="str">'className'</span>: <span class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
+        <span class="str">'className'</span>: <span
+                                class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
         <span class="str">'objectId'</span>: customer_id,
     }
     r = session.<span class="fn">get</span>(f<span class="str">'{BASE_URL}/api/read'</span>, params=params)
@@ -488,19 +560,61 @@ customer = <span class="fn">get_customer</span>(<span class="num">42</span>)
         <!-- LIST -->
         <div class="section" id="list">
             <div class="section-title"><span class="dot"></span>list — список объектов</div>
-            <p class="section-desc">Возвращает массив объектов. Поддерживает фильтрацию, сортировку и пагинацию. Параметры <code>limit</code>/<code>offset</code> передаются в <strong>теле запроса</strong> (JSON body), остальное — в query.</p>
+            <p class="section-desc">Возвращает массив объектов. Поддерживает фильтрацию, сортировку и пагинацию.
+                Параметры <code>limit</code>/<code>offset</code> передаются в <strong>теле запроса</strong> (JSON body),
+                остальное — в query.</p>
 
             <div class="card">
                 <div class="card-title"><span class="method get">GET</span> /api/list</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>moduleName</td><td>string</td><td>query</td><td>Имя модуля <span class="req">*</span></td></tr>
-                    <tr><td>className</td><td>string</td><td>query</td><td>Полное имя класса <span class="req">*</span></td></tr>
-                    <tr><td>limit</td><td>integer</td><td>body</td><td>Макс. кол-во записей <span class="opt">необяз.</span></td></tr>
-                    <tr><td>offset</td><td>integer</td><td>body</td><td>Смещение (пагинация) <span class="opt">необяз.</span></td></tr>
-                    <tr><td>filters</td><td>array</td><td>query</td><td>Фильтры <span class="opt">необяз.</span></td></tr>
-                    <tr><td>sortFields</td><td>array</td><td>query</td><td>Поля сортировки <span class="opt">необяз.</span></td></tr>
-                    <tr><td>sortOrders</td><td>array</td><td>query</td><td>Порядок: asc/desc <span class="opt">необяз.</span></td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>moduleName</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Имя модуля <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>className</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Полное имя класса <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>limit</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>Макс. кол-во записей <span class="opt">необяз.</span></td>
+                    </tr>
+                    <tr>
+                        <td>offset</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>Смещение (пагинация) <span class="opt">необяз.</span></td>
+                    </tr>
+                    <tr>
+                        <td>filters</td>
+                        <td>array</td>
+                        <td>query</td>
+                        <td>Фильтры <span class="opt">необяз.</span></td>
+                    </tr>
+                    <tr>
+                        <td>sortFields</td>
+                        <td>array</td>
+                        <td>query</td>
+                        <td>Поля сортировки <span class="opt">необяз.</span></td>
+                    </tr>
+                    <tr>
+                        <td>sortOrders</td>
+                        <td>array</td>
+                        <td>query</td>
+                        <td>Порядок: asc/desc <span class="opt">необяз.</span></td>
+                    </tr>
                 </table>
             </div>
 
@@ -508,10 +622,12 @@ customer = <span class="fn">get_customer</span>(<span class="num">42</span>)
                 <div class="card-title">🐍 Пример — список всех клиентов</div>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">copy</button>
-                    <pre><span class="kw">def</span> <span class="fn">list_customers</span>(limit=<span class="num">100</span>, offset=<span class="num">0</span>) -> list:
+                    <pre><span class="kw">def</span> <span class="fn">list_customers</span>(limit=<span
+                            class="num">100</span>, offset=<span class="num">0</span>) -> list:
     params = {
         <span class="str">'moduleName'</span>: <span class="str">'crm.customer'</span>,
-        <span class="str">'className'</span>: <span class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
+        <span class="str">'className'</span>: <span
+                                class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
     }
     body = {<span class="str">'limit'</span>: limit, <span class="str">'offset'</span>: offset}
     r = session.<span class="fn">get</span>(f<span class="str">'{BASE_URL}/api/list'</span>, params=params, json=body)
@@ -531,7 +647,9 @@ customers = <span class="fn">list_customers</span>(limit=<span class="num">50</s
 
 <span class="kw">def</span> <span class="fn">list_dishes_filtered</span>():
     filters = [
-        {<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span class="str">'operation'</span>: <span class="str">'eq'</span>, <span class="str">'value'</span>: <span class="str">'false'</span>},
+        {<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span
+                                class="str">'operation'</span>: <span class="str">'eq'</span>, <span
+                                class="str">'value'</span>: <span class="str">'false'</span>},
     ]
     params = {
         <span class="str">'moduleName'</span>: <span class="str">'dish.dish'</span>,
@@ -551,15 +669,36 @@ customers = <span class="fn">list_customers</span>(limit=<span class="num">50</s
         <!-- CREATE -->
         <div class="section" id="create">
             <div class="section-title"><span class="dot"></span>create — создать объект</div>
-            <p class="section-desc">Создаёт новый объект. Данные передаются в <strong>теле запроса</strong> в формате JSON.</p>
+            <p class="section-desc">Создаёт новый объект. Данные передаются в <strong>теле запроса</strong> в формате
+                JSON.</p>
 
             <div class="card">
                 <div class="card-title"><span class="method post">POST</span> /api/create</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>moduleName</td><td>string</td><td>query</td><td>Имя модуля <span class="req">*</span></td></tr>
-                    <tr><td>className</td><td>string</td><td>query</td><td>Полное имя класса <span class="req">*</span></td></tr>
-                    <tr><td>тело объекта</td><td>object</td><td>body</td><td>Поля нового объекта <span class="req">*</span></td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>moduleName</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Имя модуля <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>className</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Полное имя класса <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>тело объекта</td>
+                        <td>object</td>
+                        <td>body</td>
+                        <td>Поля нового объекта <span class="req">*</span></td>
+                    </tr>
                 </table>
             </div>
 
@@ -570,7 +709,8 @@ customers = <span class="fn">list_customers</span>(limit=<span class="num">50</s
                     <pre><span class="kw">def</span> <span class="fn">create_customer</span>(name: str, phone: str) -> dict:
     params = {
         <span class="str">'moduleName'</span>: <span class="str">'crm.customer'</span>,
-        <span class="str">'className'</span>: <span class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
+        <span class="str">'className'</span>: <span
+                                class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
     }
     body = {
         <span class="str">'name'</span>: name,
@@ -578,10 +718,12 @@ customers = <span class="fn">list_customers</span>(limit=<span class="num">50</s
     }
     r = session.<span class="fn">post</span>(f<span class="str">'{BASE_URL}/api/create'</span>, params=params, json=body)
     r.<span class="fn">raise_for_status</span>()
-    <span class="kw">return</span> r.<span class="fn">json</span>()  <span class="cmt"># вернёт созданный объект с id</span>
+    <span class="kw">return</span> r.<span class="fn">json</span>()  <span
+                                class="cmt"># вернёт созданный объект с id</span>
 
 new_customer = <span class="fn">create_customer</span>(<span class="str">'Иван Петров'</span>, <span class="str">'+79991234567'</span>)
-<span class="fn">print</span>(<span class="str">'Создан с ID:'</span>, new_customer[<span class="str">'id'</span>])</pre>
+<span class="fn">print</span>(<span class="str">'Создан с ID:'</span>, new_customer[<span
+                                class="str">'id'</span>])</pre>
                 </div>
             </div>
         </div>
@@ -589,16 +731,42 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
         <!-- UPDATE -->
         <div class="section" id="update">
             <div class="section-title"><span class="dot"></span>update — изменить объект</div>
-            <p class="section-desc">Обновляет существующий объект. В теле нужно передать <strong>id</strong> и изменяемые поля.</p>
+            <p class="section-desc">Обновляет существующий объект. В теле нужно передать <strong>id</strong> и
+                изменяемые поля.</p>
 
             <div class="card">
                 <div class="card-title"><span class="method post">POST</span> /api/update</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>moduleName</td><td>string</td><td>query</td><td>Имя модуля <span class="req">*</span></td></tr>
-                    <tr><td>className</td><td>string</td><td>query</td><td>Полное имя класса <span class="req">*</span></td></tr>
-                    <tr><td>id</td><td>integer</td><td>body</td><td>ID объекта для обновления <span class="req">*</span></td></tr>
-                    <tr><td>поля</td><td>object</td><td>body</td><td>Поля для изменения</td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>moduleName</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Имя модуля <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>className</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Полное имя класса <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>ID объекта для обновления <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>поля</td>
+                        <td>object</td>
+                        <td>body</td>
+                        <td>Поля для изменения</td>
+                    </tr>
                 </table>
             </div>
 
@@ -606,17 +774,22 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
                 <div class="card-title">🐍 Пример — изменить email клиента</div>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">copy</button>
-                    <pre><span class="kw">def</span> <span class="fn">update_customer</span>(customer_id: <span class="fn">int</span>, **fields) -> dict:
+                    <pre><span class="kw">def</span> <span class="fn">update_customer</span>(customer_id: <span
+                            class="fn">int</span>, **fields) -> dict:
     params = {
         <span class="str">'moduleName'</span>: <span class="str">'crm.customer'</span>,
-        <span class="str">'className'</span>: <span class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
+        <span class="str">'className'</span>: <span
+                                class="str">'ru.edgex.quickresto.modules.crm.customer.CrmCustomer'</span>,
     }
     body = {<span class="str">'id'</span>: customer_id, **fields}
     r = session.<span class="fn">post</span>(f<span class="str">'{BASE_URL}/api/update'</span>, params=params, json=body)
     r.<span class="fn">raise_for_status</span>()
     <span class="kw">return</span> r.<span class="fn">json</span>()
 
-<span class="fn">update_customer</span>(<span class="num">42</span>, email=<span class="str">'<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5ccd3c4cbe5c8c4ccc98bd7d0">[email&#160;protected]</a>'</span>, name=<span class="str">'Иван Обновлённый'</span>)</pre>
+<span class="fn">update_customer</span>(<span class="num">42</span>, email=<span class="str">'<a
+                                href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="a5ccd3c4cbe5c8c4ccc98bd7d0">[email&#160;protected]</a>'</span>, name=<span
+                                class="str">'Иван Обновлённый'</span>)</pre>
                 </div>
             </div>
         </div>
@@ -629,10 +802,30 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
             <div class="card">
                 <div class="card-title"><span class="method post">POST</span> /api/remove</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>moduleName</td><td>string</td><td>query</td><td>Имя модуля <span class="req">*</span></td></tr>
-                    <tr><td>className</td><td>string</td><td>query</td><td>Полное имя класса <span class="req">*</span></td></tr>
-                    <tr><td>id</td><td>integer</td><td>body</td><td>ID объекта <span class="req">*</span></td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>moduleName</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Имя модуля <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>className</td>
+                        <td>string</td>
+                        <td>query</td>
+                        <td>Полное имя класса <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>ID объекта <span class="req">*</span></td>
+                    </tr>
                 </table>
             </div>
 
@@ -640,7 +833,8 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
                 <div class="card-title">🐍 Пример — удалить объект</div>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">copy</button>
-                    <pre><span class="kw">def</span> <span class="fn">remove_object</span>(module: str, cls: str, obj_id: <span class="fn">int</span>) -> dict:
+                    <pre><span class="kw">def</span> <span class="fn">remove_object</span>(module: str, cls: str, obj_id: <span
+                            class="fn">int</span>) -> dict:
     params = {<span class="str">'moduleName'</span>: module, <span class="str">'className'</span>: cls}
     r = session.<span class="fn">post</span>(
         f<span class="str">'{BASE_URL}/api/remove'</span>,
@@ -663,20 +857,48 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
         <!-- FILTERS -->
         <div class="section" id="filters">
             <div class="section-title"><span class="dot"></span>Фильтрация</div>
-            <p class="section-desc">Параметр <code>filters</code> — массив объектов. Каждый объект: <code>field</code> + <code>operation</code> + <code>value</code>. Передаётся в query как JSON-строка.</p>
+            <p class="section-desc">Параметр <code>filters</code> — массив объектов. Каждый объект: <code>field</code> +
+                <code>operation</code> + <code>value</code>. Передаётся в query как JSON-строка.</p>
 
             <div class="card">
                 <div class="card-title">Операции фильтрации</div>
                 <div class="ops-grid">
-                    <div class="op-item"><div class="op-name">eq</div><div class="op-desc">равно</div></div>
-                    <div class="op-item"><div class="op-name">neq</div><div class="op-desc">не равно</div></div>
-                    <div class="op-item"><div class="op-name">gt</div><div class="op-desc">больше</div></div>
-                    <div class="op-item"><div class="op-name">gte</div><div class="op-desc">больше или равно</div></div>
-                    <div class="op-item"><div class="op-name">lt</div><div class="op-desc">меньше</div></div>
-                    <div class="op-item"><div class="op-name">lte</div><div class="op-desc">меньше или равно</div></div>
-                    <div class="op-item"><div class="op-name">like</div><div class="op-desc">содержит подстроку</div></div>
-                    <div class="op-item"><div class="op-name">contains</div><div class="op-desc">содержит элемент</div></div>
-                    <div class="op-item"><div class="op-name">range</div><div class="op-desc">диапазон дат</div></div>
+                    <div class="op-item">
+                        <div class="op-name">eq</div>
+                        <div class="op-desc">равно</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">neq</div>
+                        <div class="op-desc">не равно</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">gt</div>
+                        <div class="op-desc">больше</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">gte</div>
+                        <div class="op-desc">больше или равно</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">lt</div>
+                        <div class="op-desc">меньше</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">lte</div>
+                        <div class="op-desc">меньше или равно</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">like</div>
+                        <div class="op-desc">содержит подстроку</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">contains</div>
+                        <div class="op-desc">содержит элемент</div>
+                    </div>
+                    <div class="op-item">
+                        <div class="op-name">range</div>
+                        <div class="op-desc">диапазон дат</div>
+                    </div>
                 </div>
             </div>
 
@@ -687,10 +909,14 @@ new_customer = <span class="fn">create_customer</span>(<span class="str">'Ива
                     <pre><span class="kw">import</span> json
 
 <span class="cmt"># 1. По точному значению</span>
-filters = [{<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span class="str">'operation'</span>: <span class="str">'eq'</span>, <span class="str">'value'</span>: <span class="str">'false'</span>}]
+filters = [{<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span class="str">'operation'</span>: <span
+                                class="str">'eq'</span>, <span class="str">'value'</span>: <span
+                                class="str">'false'</span>}]
 
 <span class="cmt"># 2. Поиск по имени (LIKE)</span>
-filters = [{<span class="str">'field'</span>: <span class="str">'name'</span>, <span class="str">'operation'</span>: <span class="str">'like'</span>, <span class="str">'value'</span>: <span class="str">'Иван'</span>}]
+filters = [{<span class="str">'field'</span>: <span class="str">'name'</span>, <span
+                                class="str">'operation'</span>: <span class="str">'like'</span>, <span class="str">'value'</span>: <span
+                                class="str">'Иван'</span>}]
 
 <span class="cmt"># 3. Диапазон дат (unix timestamp)</span>
 filters = [{
@@ -704,8 +930,12 @@ filters = [{
 
 <span class="cmt"># 4. Несколько фильтров сразу</span>
 filters = [
-    {<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span class="str">'operation'</span>: <span class="str">'eq'</span>, <span class="str">'value'</span>: <span class="str">'false'</span>},
-    {<span class="str">'field'</span>: <span class="str">'name'</span>, <span class="str">'operation'</span>: <span class="str">'like'</span>, <span class="str">'value'</span>: <span class="str">'пицц'</span>},
+    {<span class="str">'field'</span>: <span class="str">'deleted'</span>, <span class="str">'operation'</span>: <span
+                                class="str">'eq'</span>, <span class="str">'value'</span>: <span
+                                class="str">'false'</span>},
+    {<span class="str">'field'</span>: <span class="str">'name'</span>, <span class="str">'operation'</span>: <span
+                                class="str">'like'</span>, <span class="str">'value'</span>: <span
+                                class="str">'пицц'</span>},
 ]
 
 <span class="cmt"># Передача в запрос:</span>
@@ -717,7 +947,8 @@ params[<span class="str">'filters'</span>] = json.<span class="fn">dumps</span>(
         <!-- SORTING -->
         <div class="section" id="sorting">
             <div class="section-title"><span class="dot"></span>Сортировка</div>
-            <p class="section-desc">Параметры <code>sortFields</code> и <code>sortOrders</code> передаются в query. Количество элементов в обоих массивах должно совпадать.</p>
+            <p class="section-desc">Параметры <code>sortFields</code> и <code>sortOrders</code> передаются в query.
+                Количество элементов в обоих массивах должно совпадать.</p>
 
             <div class="card">
                 <div class="card-title">🐍 Примеры сортировки</div>
@@ -736,19 +967,23 @@ params[<span class="str">'sortOrders'</span>] = [<span class="str">'asc'</span>,
                 </div>
             </div>
 
-            <div class="alert warn">⚠️ Не все поля поддерживают сортировку — это указано в документации API. При ошибке попробуйте убрать сортировку.</div>
+            <div class="alert warn">⚠️ Не все поля поддерживают сортировку — это указано в документации API. При ошибке
+                попробуйте убрать сортировку.
+            </div>
         </div>
 
         <!-- PAGINATION -->
         <div class="section" id="pagination">
             <div class="section-title"><span class="dot"></span>Пагинация</div>
-            <p class="section-desc">Используйте <code>limit</code> и <code>offset</code> в теле запроса для постраничной загрузки.</p>
+            <p class="section-desc">Используйте <code>limit</code> и <code>offset</code> в теле запроса для постраничной
+                загрузки.</p>
 
             <div class="card">
                 <div class="card-title">🐍 Загрузка всех объектов постранично</div>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">copy</button>
-                    <pre><span class="kw">def</span> <span class="fn">fetch_all</span>(module: str, cls: str, page_size=<span class="num">100</span>) -> list:
+                    <pre><span class="kw">def</span> <span class="fn">fetch_all</span>(module: str, cls: str, page_size=<span
+                            class="num">100</span>) -> list:
     result = []
     offset = <span class="num">0</span>
     params = {<span class="str">'moduleName'</span>: module, <span class="str">'className'</span>: cls}
@@ -779,18 +1014,46 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
         <!-- BONUSES FILTER -->
         <div class="section" id="bonuses-filter">
             <div class="section-title"><span class="dot"></span>filterCustomers — поиск клиента</div>
-            <p class="section-desc">Специализированный эндпоинт поиска клиентов по имени, телефону, email или любой строке. Не требует <code>moduleName</code> и <code>className</code> — работает только с клиентами CRM.</p>
+            <p class="section-desc">Специализированный эндпоинт поиска клиентов по имени, телефону, email или любой
+                строке. Не требует <code>moduleName</code> и <code>className</code> — работает только с клиентами CRM.
+            </p>
 
-            <div class="alert info">ℹ️ URL отличается от стандартного — здесь нет <code>/api/</code>. Путь: <code>/bonuses/filterCustomers</code></div>
+            <div class="alert info">ℹ️ URL отличается от стандартного — здесь нет <code>/api/</code>. Путь: <code>/bonuses/filterCustomers</code>
+            </div>
 
             <div class="card">
                 <div class="card-title"><span class="method post">POST</span> /bonuses/filterCustomers</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>search</td><td>string</td><td>body</td><td>Строка поиска (имя, телефон, email) <span class="req">*</span></td></tr>
-                    <tr><td>typeList</td><td>array</td><td>body</td><td>Всегда <code>["customer"]</code> <span class="req">*</span></td></tr>
-                    <tr><td>limit</td><td>integer</td><td>body</td><td>Макс. кол-во результатов <span class="opt">необяз.</span></td></tr>
-                    <tr><td>offset</td><td>integer</td><td>body</td><td>Смещение <span class="opt">необяз.</span></td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>search</td>
+                        <td>string</td>
+                        <td>body</td>
+                        <td>Строка поиска (имя, телефон, email) <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>typeList</td>
+                        <td>array</td>
+                        <td>body</td>
+                        <td>Всегда <code>["customer"]</code> <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>limit</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>Макс. кол-во результатов <span class="opt">необяз.</span></td>
+                    </tr>
+                    <tr>
+                        <td>offset</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>Смещение <span class="opt">необяз.</span></td>
+                    </tr>
                 </table>
             </div>
 
@@ -815,19 +1078,44 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
 <span class="cmt"># Можно искать по-разному:</span>
 <span class="fn">find_customer</span>(<span class="str">'+79991234567'</span>)   <span class="cmt"># по телефону</span>
 <span class="fn">find_customer</span>(<span class="str">'Иван Петров'</span>)     <span class="cmt"># по имени</span>
-<span class="fn">find_customer</span>(<span class="str">'ivan@mail.ru'</span>)    <span class="cmt"># по email</span></pre>
+<span class="fn">find_customer</span>(<span class="str">'ivan@mail.ru'</span>)    <span
+                                class="cmt"># по email</span></pre>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-title">Сравнение с /api/list</div>
                 <table class="param-table">
-                    <tr><th></th><th>/bonuses/filterCustomers</th><th>/api/list (crm.customer)</th></tr>
-                    <tr><td>HTTP метод</td><td>POST</td><td>GET</td></tr>
-                    <tr><td>Поиск по строке</td><td style="color:var(--green)">✓ есть</td><td style="color:var(--red)">✗ нет</td></tr>
-                    <tr><td>moduleName/className</td><td style="color:var(--green)">не нужны</td><td style="color:var(--red)">обязательны</td></tr>
-                    <tr><td>Фильтры по полям</td><td style="color:var(--red)">✗ нет</td><td style="color:var(--green)">✓ есть</td></tr>
-                    <tr><td>Когда использовать</td><td>Поиск по строке</td><td>Получить всех / фильтр по полю</td></tr>
+                    <tr>
+                        <th></th>
+                        <th>/bonuses/filterCustomers</th>
+                        <th>/api/list (crm.customer)</th>
+                    </tr>
+                    <tr>
+                        <td>HTTP метод</td>
+                        <td>POST</td>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <td>Поиск по строке</td>
+                        <td style="color:var(--green)">✓ есть</td>
+                        <td style="color:var(--red)">✗ нет</td>
+                    </tr>
+                    <tr>
+                        <td>moduleName/className</td>
+                        <td style="color:var(--green)">не нужны</td>
+                        <td style="color:var(--red)">обязательны</td>
+                    </tr>
+                    <tr>
+                        <td>Фильтры по полям</td>
+                        <td style="color:var(--red)">✗ нет</td>
+                        <td style="color:var(--green)">✓ есть</td>
+                    </tr>
+                    <tr>
+                        <td>Когда использовать</td>
+                        <td>Поиск по строке</td>
+                        <td>Получить всех / фильтр по полю</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -835,16 +1123,34 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
         <!-- BONUSES PUT -->
         <div class="section" id="bonuses-put">
             <div class="section-title"><span class="dot"></span>putCustomer — редактировать клиента</div>
-            <p class="section-desc">Ещё один специализированный эндпоинт CRM для обновления данных клиента. Альтернатива <code>/api/update</code> для модуля клиентов.</p>
+            <p class="section-desc">Ещё один специализированный эндпоинт CRM для обновления данных клиента. Альтернатива
+                <code>/api/update</code> для модуля клиентов.</p>
 
-            <div class="alert warn">⚠️ URL: <code>/bonuses/putCustomer</code> — без <code>/api/</code>, метод POST, данные в body.</div>
+            <div class="alert warn">⚠️ URL: <code>/bonuses/putCustomer</code> — без <code>/api/</code>, метод POST,
+                данные в body.
+            </div>
 
             <div class="card">
                 <div class="card-title"><span class="method post">POST</span> /bonuses/putCustomer</div>
                 <table class="param-table">
-                    <tr><th>Параметр</th><th>Тип</th><th>Где</th><th>Описание</th></tr>
-                    <tr><td>id</td><td>integer</td><td>body</td><td>ID клиента <span class="req">*</span></td></tr>
-                    <tr><td>поля клиента</td><td>object</td><td>body</td><td>Поля для изменения</td></tr>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Тип</th>
+                        <th>Где</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>integer</td>
+                        <td>body</td>
+                        <td>ID клиента <span class="req">*</span></td>
+                    </tr>
+                    <tr>
+                        <td>поля клиента</td>
+                        <td>object</td>
+                        <td>body</td>
+                        <td>Поля для изменения</td>
+                    </tr>
                 </table>
             </div>
 
@@ -860,7 +1166,8 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
     r.<span class="fn">raise_for_status</span>()
     <span class="kw">return</span> r.<span class="fn">json</span>()
 
-<span class="fn">put_customer</span>(<span class="num">42</span>, email=<span class="str">'new@mail.ru'</span>, firstName=<span class="str">'Иван'</span>)</pre>
+<span class="fn">put_customer</span>(<span class="num">42</span>, email=<span class="str">'new@mail.ru'</span>, firstName=<span
+                                class="str">'Иван'</span>)</pre>
                 </div>
             </div>
         </div>
@@ -895,7 +1202,8 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
                     </div>
                     <div class="config-input">
                         <label>Действие</label>
-                        <select id="g-action" style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; outline: none;">
+                        <select id="g-action"
+                                style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; outline: none;">
                             <option value="list">list (список)</option>
                             <option value="read">read (один объект)</option>
                             <option value="create">create (создать)</option>
@@ -913,7 +1221,8 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
                     </div>
                     <div class="config-input" style="grid-column: 1 / -1;">
                         <label>Класс (className)</label>
-                        <input id="g-class" type="text" placeholder="ru.edgex.quickresto.modules.crm.customer.CrmCustomer">
+                        <input id="g-class" type="text"
+                               placeholder="ru.edgex.quickresto.modules.crm.customer.CrmCustomer">
                     </div>
                     <div class="config-input" id="g-id-wrap">
                         <label>objectId / id</label>
@@ -938,7 +1247,8 @@ all_dishes = <span class="fn">fetch_all</span>(<span class="str">'dish.dish'</sp
     </main>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
     // Navigation
     function show(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));

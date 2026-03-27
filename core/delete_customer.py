@@ -2,8 +2,6 @@
 import requests
 from loguru import logger
 
-from config.config import base_url, auth, headers
-
 
 def delete_customer(customer_id: int, base_url, auth, headers):
     """
@@ -41,8 +39,3 @@ def delete_customer(customer_id: int, base_url, auth, headers):
 
     except Exception as e:
         logger.exception(e)
-
-
-if __name__ == "__main__":
-    from config.config import base_url, auth, headers
-    delete_customer(customer_id=7711, base_url=base_url, auth=auth, headers=headers)

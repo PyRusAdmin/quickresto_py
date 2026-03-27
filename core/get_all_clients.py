@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
 
-from config.config import base_url, auth, headers
-
 
 def get_all_clients(base_url, auth, headers):
     """Получает данные о всех клиентах"""
