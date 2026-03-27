@@ -49,8 +49,16 @@ def update_customer_bonus(layer_name_quickresto: str, customer_id: int, amount: 
 
 def print_update_customer_bonus():
     """Редактирование клиента"""
+    from config.config import layer_name_quickresto, auth, headers
 
-    result = update_customer_bonus(customer_id=7678, amount=0, customer_phone='79493531398')
+    result = update_customer_bonus(
+        layer_name_quickresto=layer_name_quickresto,
+        customer_id=7678,
+        amount=0,
+        customer_phone='79493531398',
+        auth=auth,
+        headers=headers
+    )
 
     if result:
         console.print_json(json.dumps(result, indent=2, ensure_ascii=False))

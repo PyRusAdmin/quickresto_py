@@ -1,33 +1,36 @@
 # -*- coding: utf-8 -*-
 import json
 
+from rich.console import Console
 from rich.prompt import Prompt
 
-from config import base_url, auth, headers, layer_name_quickresto, console
-from core.create_client import create_client
-from core.delete_customer import delete_customer
+from config.config import base_url, auth, headers, layer_name_quickresto
 from core.get_all_clients import get_all_clients
-from core.get_client_phone import get_customer_by_phone
-from core.get_full_client_info import get_full_client_info
 from core.update_customer_bonus import update_customer_bonus
-
+from core.delete_customer import delete_customer
+from core.get_full_client_info import get_full_client_info
+from core.create_client import create_client
+from core.get_client_phone import get_customer_by_phone
 
 # Импортируем только функцию, но не вызываем напрямую из get_full_client_info
 # чтобы избежать циклических импортов
 
 # https://quickresto.ru/api/
 
+console = Console()
+
 
 def run_get_all_clients():
-    result = get_all_clients()
+    result = get_all_clients(base_url, auth, headers)
     console.print(f"[green]Всего клиентов: {len(result)}[/green]")
 
 
 def run_update_customer_bonus():
+    layer = Prompt.ask("Введите layer_name_quickresto", default=layer_name_quickresto)
     customer_id = int(Prompt.ask("Введите customer_id"))
     amount = float(Prompt.ask("Введите количество бонусов"))
     customer_phone = Prompt.ask("Введите номер телефона")
-    result = update_customer_bonus(customer_id, amount, customer_phone)
+    result = update_customer_bonus(layer, customer_id, amount, customer_phone, auth, headers)
     if result:
         console.print_json(json.dumps(result, indent=2, ensure_ascii=False))
     else:
